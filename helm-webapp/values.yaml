@@ -1,0 +1,14 @@
+appName: my-helm-webapi
+
+port: 80
+
+configmap:
+  name: myhelmapp-configmap-v1
+
+image:
+  name: tomasr/webapi
+  tag: 1
+  
+service:
+  type: ClusterIP
+  port: 80

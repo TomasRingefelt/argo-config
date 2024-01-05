@@ -1,0 +1,7 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ .Values.configmap.name }}
+data:
+  ASPNETCORE_ENVIRONMENT: "Production"
+

@@ -1,6 +1,5 @@
 appName: my-helm-webapi
 
-port: 80
 
 configmap:
   name: myhelmapp-configmap-v2
@@ -11,7 +10,7 @@ image:
   
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
   
 ingress:
   enabled: false

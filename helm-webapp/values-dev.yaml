@@ -4,7 +4,9 @@ replicas: 1
 configmap:
   name: myhelmapp-dev-configmap-v3
   data:
-    environment: "Development"
+    environment: Development
+    default_loglevel: Debug
+
 image:
   name: tomasr/webapi
   tag: 2

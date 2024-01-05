@@ -1,0 +1,10 @@
+appName: my-helm-webapi-dev
+replicas: 1
+
+configmap:
+  name: myhelmapp-dev-configmap-v1
+  data:
+    environment: "Development"
+image:
+  name: tomasr/webapi
+  tag: 1

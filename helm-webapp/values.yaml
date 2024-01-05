@@ -1,5 +1,5 @@
 appName: my-helm-webapi
-
+replicas: 3
 
 configmap:
   name: myhelmapp-configmap-v2

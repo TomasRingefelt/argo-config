@@ -5,5 +5,5 @@
 replicaCount: 1
 
 image: 
-  tag: "2"
+  tag: "5"
 

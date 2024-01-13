@@ -2,12 +2,12 @@
 kind: Application
 metadata:
   name: guestbook
-  namespace: argocd
+  namespace: argocd-staging
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: argocd
+    namespace: argocd-staging
     server: {{ .Values.spec.destination.server }}
   project: default
   source:

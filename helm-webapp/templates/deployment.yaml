@@ -9,21 +9,32 @@ spec:
   selector:
     matchLabels:
       app: {{ .Values.appName }}
-      tier: frontend
+      tier: backend
   template:
     metadata:
       labels:
         app: {{ .Values.appName }}
-        tier: frontend
+        tier: backend
     spec: # Pod spec
       containers:
         - name: webapi
           image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
           ports:
-            - containerPort: {{.Values.service.port}}
+            - name: http
+              containerPort: {{.Values.service.port}}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
           envFrom:
             - configMapRef:
                 name: {{ .Values.configmap.name }}
+
           resources:
             requests:
               memory: "128Mi"

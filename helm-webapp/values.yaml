@@ -6,6 +6,7 @@ configmap:
   data:
     environment: Production
     default_loglevel: Information
+    aspnet_loglevel: Warning
 
 image:
   name: tomasr/webapi

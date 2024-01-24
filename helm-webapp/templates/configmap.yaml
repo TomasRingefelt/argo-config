@@ -5,3 +5,4 @@ metadata:
 data:
   ASPNETCORE_ENVIRONMENT: {{.Values.configmap.data.environment | quote}}
   Logging__LogLevel__Default: {{.Values.configmap.data.default_loglevel | quote}}
+  Logging__LogLevel__Microsoft.AspNetCore: {{.Values.configmap.data.aspnet_loglevel| quote}}

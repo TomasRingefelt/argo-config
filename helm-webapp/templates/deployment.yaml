@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.appName }}
+  name: {{include "helm-webapp.fullname" .}}
   labels:
-    app: {{ .Values.appName }}
+    {{- include "helm-webapp.labels" . | nindent 4 }}
     checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum | trunc 32 }}
 spec:
   replicas: {{ .Values.replicas }}
@@ -34,7 +34,7 @@ spec:
               port: http
           envFrom:
             - configMapRef:
-                name: {{ .Values.configmap.name }}
+                name: {{include "helm-webapp.fullname" .}}-config
 
           resources:
             requests:

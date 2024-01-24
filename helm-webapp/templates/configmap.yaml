@@ -1,7 +1,9 @@
 ﻿kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: {{ .Values.configmap.name }}
+  name: {{include "helm-webapp.fullname" .}}-config
+  labels:
+    {{- include "helm-webapp.labels" . | nindent 4 }}
 data:
   ASPNETCORE_ENVIRONMENT: {{.Values.configmap.data.environment | quote}}
   Logging__LogLevel__Default: {{.Values.configmap.data.default_loglevel | quote}}

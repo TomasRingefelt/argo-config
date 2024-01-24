@@ -1,0 +1,7 @@
+image:
+  tag: 1
+
+
+configmap:
+  data:
+    weeatherapiurl: http://webapi-helm-webapp.prod.svc.cluster.local:9300

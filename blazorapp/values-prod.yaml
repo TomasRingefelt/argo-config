@@ -4,4 +4,4 @@ image:
 
 configmap:
   data:
-    weeatherapiurl: http://webapi-helm-webapp.prod.svc.cluster.local:9300
+    weeatherapiurl: http://prod-weather-api.dev.svc.cluster.local:9300

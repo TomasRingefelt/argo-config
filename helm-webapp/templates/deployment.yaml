@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.appName }}
   labels:
     app: {{ .Values.appName }}
-    checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+    checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum | trunc 32 }}
 spec:
   replicas: {{ .Values.replicas }}
   selector:

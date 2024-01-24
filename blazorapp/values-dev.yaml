@@ -1,6 +1,7 @@
 image:
   tag: 1
 
+replicaCount: 2
 
 configmap:
   data:

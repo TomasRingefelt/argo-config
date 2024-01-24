@@ -21,15 +21,17 @@ spec:
           image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
           ports:
             - name: http
-              containerPort: {{.Values.service.port}}
+              containerPort: 9300
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /health
               port: http
+            initialDelaySeconds: 10
+            failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /
+              path: /health
               port: http
           envFrom:
             - configMapRef:

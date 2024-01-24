@@ -17,10 +17,10 @@ spec:
         tier: frontend
     spec: # Pod spec
       containers:
-        - name: mycontainer
+        - name: webapi
           image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
           ports:
-            - containerPort: 8080
+            - containerPort: {{.Values.service.port}}
           envFrom:
             - configMapRef:
                 name: {{ .Values.configmap.name }}

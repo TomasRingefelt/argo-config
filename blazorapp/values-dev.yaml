@@ -4,4 +4,4 @@ image:
 
 configmap:
   data:
-    weeatherapiurl: http://weatherapi-dev.weatherapi.svc.cluster.local:9300
+    weatherapiurl: http://weatherapi-dev-weather-api.weatherapi.svc.cluster.local:9300

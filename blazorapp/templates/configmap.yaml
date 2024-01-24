@@ -7,4 +7,4 @@ metadata:
   
 data:
   ASPNETCORE_ENVIRONMENT: {{.Values.configmap.data.environment | quote}}
-  WeatherApiUrl: {{.Values.configmap.data.weeatherapiurl | quote}}
+  WeatherApiUrl: {{.Values.configmap.data.weatherapiurl | quote}}

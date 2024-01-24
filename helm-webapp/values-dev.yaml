@@ -5,7 +5,7 @@ configmap:
   name: webapi-dev-configmap-v4
   data:
     environment: Production
-    default_loglevel: Information
+    default_loglevel: Debug
 
 image:
   name: tomasr/webapi

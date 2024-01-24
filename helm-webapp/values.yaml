@@ -9,7 +9,7 @@ configmap:
 
 image:
   name: tomasr/webapi
-  tag: 1
+  tag: 3
   
 service:
   type: ClusterIP

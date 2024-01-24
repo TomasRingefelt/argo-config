@@ -9,12 +9,15 @@ spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
+      app: {{ .Values.appName }}
+      tier: backend
       {{- include "helm-webapp.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
         app: {{ .Values.appName }}
         tier: backend
+        {{- include "helm-webapp.selectorLabels" . | nindent 6 }}
     spec: # Pod spec
       containers:
         - name: webapi

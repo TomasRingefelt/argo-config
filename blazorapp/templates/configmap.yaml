@@ -1,0 +1,10 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "blazorapp.fullname" . }}-config
+  labels:
+    {{- include "blazorapp.labels" . | nindent 4 }}
+  
+data:
+  ASPNETCORE_ENVIRONMENT: {{.Values.configmap.data.environment | quote}}
+  WeatherApiUrl: {{.Values.configmap.data.weeatherapiurl | quote}}

@@ -1,10 +1,10 @@
-appName: my-helm-webapi-dev
+appName: webapi-dev
 replicas: 1
 
 configmap:
-  name: myhelmapp-dev-configmap-v3
+  name: webapi-dev-configmap-v4
   data:
-    environment: Development
+    environment: Production
     default_loglevel: Information
 
 image:

@@ -1,5 +1,5 @@
 appName: webapi-dev
-replicas: 1
+replicas: 3
 
 configmap:
   name: webapi-dev-configmap-v4

@@ -5,7 +5,7 @@ configmap:
   name: myhelmapp-dev-configmap-v3
   data:
     environment: Development
-    default_loglevel: Debug
+    default_loglevel: Information
 
 image:
   name: tomasr/webapi

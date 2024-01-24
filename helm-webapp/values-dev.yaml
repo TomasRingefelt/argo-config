@@ -9,4 +9,4 @@ configmap:
 
 image:
   name: tomasr/webapi
-  tag: 2
+  tag: 1

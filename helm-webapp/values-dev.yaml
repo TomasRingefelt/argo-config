@@ -10,4 +10,4 @@ configmap:
     api_token: supersecret
 image:
   name: tomasr/webapi
-  tag: 3
+  tag: 6

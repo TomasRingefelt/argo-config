@@ -4,10 +4,10 @@ replicas: 1
 configmap:
   name: webapi-dev-configmap-v7
   data:
-    environment: Production
+    environment: Development
     default_loglevel: Debug
     aspnet_loglevel: Information
     api_token: supersecret
 image:
   name: tomasr/webapi
-  tag: 6
+  tag: 7

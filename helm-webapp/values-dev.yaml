@@ -1,13 +1,13 @@
 appName: webapi-dev
-replicas: 3
+replicas: 5
 
 configmap:
-  name: webapi-dev-configmap-v6
+  name: webapi-dev-configmap-v7
   data:
     environment: Production
     default_loglevel: Debug
     aspnet_loglevel: Information
-
+    api_token: supersecret
 image:
   name: tomasr/webapi
   tag: 3

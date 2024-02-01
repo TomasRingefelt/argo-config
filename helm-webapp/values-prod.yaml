@@ -1,5 +1,5 @@
-appName: webapi-dev
-replicas: 3
+appName: webapi-prod
+replicas: 5
 
 configmap:
   name: webapi-prod-configmap-v6
@@ -7,6 +7,7 @@ configmap:
     environment: Production
     default_loglevel: Information
     aspnet_loglevel: Information
+    
 
 image:
   name: tomasr/webapi

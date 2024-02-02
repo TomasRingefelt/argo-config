@@ -19,6 +19,7 @@ spec:
         vault.hashicorp.com/agent-inject: 'true'
         vault.hashicorp.com/role: 'weatherapi'
         vault.hashicorp.com/secrets.json: 'kv/weatherapi'
+        vault.hashicorp.com/ca-cert: "/run/secrets/kubernetes.io/serviceaccount/ca.crt"
     spec: # Pod spec
       containers:
         - name: webapi

@@ -14,6 +14,10 @@ spec:
     metadata:
       labels:
         {{- include "helm-webapp.selectorLabels" . | nindent 8 }}
+      annotations:
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/role: 'weatherapi'
+        vault.hashicorp.com/secrets.json: 'kv/weatherapi'
     spec: # Pod spec
       containers:
         - name: webapi

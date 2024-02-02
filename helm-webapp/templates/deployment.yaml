@@ -18,7 +18,7 @@ spec:
         vault.hashicorp.com/tls_skip_verify: 'true'
         vault.hashicorp.com/agent-inject: 'true'
         vault.hashicorp.com/role: 'weatherapi'
-        vault.hashicorp.com/vault.hashicorp.com/agent-inject-secret-secrets.txt: 'kv/weatherapi'
+        vault.hashicorp.com/agent-inject-secret-secrets.txt: 'kv/weatherapi'
         vault.hashicorp.com/ca-cert: "/run/secrets/kubernetes.io/serviceaccount/ca.crt"
     spec: # Pod spec
       serviceAccountName: weatherapi

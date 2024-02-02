@@ -21,6 +21,7 @@ spec:
         vault.hashicorp.com/secrets.json: 'kv/weatherapi'
         vault.hashicorp.com/ca-cert: "/run/secrets/kubernetes.io/serviceaccount/ca.crt"
     spec: # Pod spec
+      serviceAccountName: weatherapi
       containers:
         - name: webapi
           image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
@@ -41,7 +42,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{include "helm-webapp.fullname" .}}-config
-
+        
           resources:
             requests:
               memory: "128Mi"

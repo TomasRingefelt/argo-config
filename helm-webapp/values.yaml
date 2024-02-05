@@ -23,8 +23,6 @@ ingress:
   
 templates:
   secrets: |
-      {{- with secret "/kv/weatherapi" -}}
-        {
-        "ApiToken": {{.Data.data.ApiToken}}
-        }
-      {{ - end }}
+    {{- with secret "/kv/weatherapi" -}}
+    {{.Data.toUnescapedJSON}}
+    {{- end }}

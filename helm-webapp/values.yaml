@@ -19,3 +19,12 @@ service:
   
 ingress:
   enabled: false
+  
+  
+templates:
+  secrets: |
+      {{- with secret "/kv/weatherapi" -}}
+        {
+        "ApiToken": {{.Data.data.ApiToken}}
+        }
+      {{ - end }}

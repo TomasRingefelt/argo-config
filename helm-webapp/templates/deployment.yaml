@@ -18,7 +18,12 @@ spec:
         vault.hashicorp.com/tls_skip_verify: 'true'
         vault.hashicorp.com/agent-inject: 'true'
         vault.hashicorp.com/role: 'weatherapi'
-        vault.hashicorp.com/agent-inject-secret-secrets.txt: '/kv/weatherapi'
+        vault.hashicorp.com/agent-inject-secret-secrets.json: '/kv/weatherapi'
+        vault.hashicorp.com/agent-inject-template-secrets.json: |
+          {{`{{ with secret "`}} /kv/weatherapi  {{`" }}
+          {{ range $key, $value := .Data }}
+          export {{ $key }}={{ $value }}
+          {{ end }}`}}
         vault.hashicorp.com/ca-cert: "/run/secrets/kubernetes.io/serviceaccount/ca.crt"
     spec: # Pod spec
       serviceAccountName: weatherapi
@@ -48,3 +53,4 @@ spec:
               memory: "128Mi"
               cpu: "150m"    # 500milliCPUs (1/2 CPU)
            
+      

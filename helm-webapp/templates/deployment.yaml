@@ -18,12 +18,10 @@ spec:
         vault.hashicorp.com/tls_skip_verify: 'true'
         vault.hashicorp.com/agent-inject: 'true'
         vault.hashicorp.com/role: 'weatherapi'
-        vault.hashicorp.com/agent-inject-secret-secrets.json: '/kv/weatherapi'
-        vault.hashicorp.com/agent-inject-template-secrets.json: |
+        vault.hashicorp.com/agent-inject-secret-api.env: '/kv/weatherapi'
+        vault.hashicorp.com/agent-inject-template-api.env: |
          {{`{{- with secret "/kv/weatherapi" -}}
-            {
-              "ApiToken": "{{- .Data.data.ApiToken -}}"
-            }
+              {{- .Data.data.ApiToken -}}"
             {{- end -}}`}}
         vault.hashicorp.com/ca-cert: "/run/secrets/kubernetes.io/serviceaccount/ca.crt"
     spec: # Pod spec
@@ -45,6 +43,9 @@ spec:
             httpGet:
               path: /health
               port: http
+          args:
+            - echo set env vars;
+            - export ApiToken=$(cat /vault/secrets/api.env)
           envFrom:
             - configMapRef:
                 name: {{include "helm-webapp.fullname" .}}-config

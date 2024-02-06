@@ -21,7 +21,7 @@ spec:
         vault.hashicorp.com/agent-inject-secret-api.env: '/kv/weatherapi'
         vault.hashicorp.com/agent-inject-template-api.env: |
          {{`{{- with secret "/kv/weatherapi" -}}
-              {{- .Data.data.ApiToken -}}
+              export ApiToken="{{- .Data.data.ApiToken -}}"
             {{- end -}}`}}
         vault.hashicorp.com/ca-cert: "/run/secrets/kubernetes.io/serviceaccount/ca.crt"
     spec: # Pod spec
@@ -44,7 +44,7 @@ spec:
               path: /health
               port: http
           command: ["/bin/bash"]
-          args: ["-c", "source $(/vault/secrets/api.env)", "dotnet", "/app/WebApi.dll", ]
+          args: ["-c", "source /vault/secrets/api.env", "dotnet /app/WebApi.dll", ]
           envFrom:
             - configMapRef:
                 name: {{include "helm-webapp.fullname" .}}-config

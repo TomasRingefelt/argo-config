@@ -47,7 +47,7 @@ spec:
                 name: {{ include "blazorapp.fullname" . }}-config
           args:
             - echo set env vars;
-            - source $(cat /vault/secrets/api.env)
+            - export ApiToken=$(cat /vault/secrets/api.env)
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

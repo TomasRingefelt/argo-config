@@ -43,8 +43,8 @@ spec:
             httpGet:
               path: /health
               port: http
-          command: ["/bin/bash"]
-          args: ["-c", "source /vault/secrets/api.env", "dotnet /app/WebApi.dll", ]
+          command: ['/bin/bash', '-c']
+          args: ["source /vault/secrets/api.env", "dotnet /app/WebApi.dll"]
           envFrom:
             - configMapRef:
                 name: {{include "helm-webapp.fullname" .}}-config

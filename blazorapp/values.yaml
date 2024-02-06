@@ -13,7 +13,7 @@ image:
 configmap:
   data:
     environment: Production
-    weeatherapiurl:
+    weatherapiurl: 
 
 imagePullSecrets: []
 nameOverride: ""

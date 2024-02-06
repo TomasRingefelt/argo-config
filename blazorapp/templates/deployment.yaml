@@ -13,18 +13,15 @@ spec:
       {{- include "blazorapp.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
         vault.hashicorp.com/tls_skip_verify: 'true'
         vault.hashicorp.com/agent-inject: 'true'
         vault.hashicorp.com/role: 'weatherapi'
         vault.hashicorp.com/agent-inject-secret-api.env: '/kv/weatherapi'
         vault.hashicorp.com/agent-inject-template-api.env: |
           {{`{{- with secret "/kv/weatherapi" -}}
-               {{- .Data.data.ApiToken -}}"
-             {{- end -}}`}}
+            {{- .Data.data.ApiToken -}}
+          {{- end -}}`}}
         vault.hashicorp.com/ca-cert: "/run/secrets/kubernetes.io/serviceaccount/ca.crt"
       labels:
         {{- include "blazorapp.labels" . | nindent 8 }}

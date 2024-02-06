@@ -4,16 +4,6 @@ metadata:
   name: {{ include "blazorapp.fullname" . }}
   labels:
     {{- include "blazorapp.labels" . | nindent 4 }}
-  annotations:
-    vault.hashicorp.com/tls_skip_verify: 'true'
-    vault.hashicorp.com/agent-inject: 'true'
-    vault.hashicorp.com/role: 'weatherapi'
-    vault.hashicorp.com/agent-inject-secret-api.env: '/kv/weatherapi'
-    vault.hashicorp.com/agent-inject-template-api.env: |
-     {{`{{- with secret "/kv/weatherapi" -}}
-          {{- .Data.data.ApiToken -}}"
-        {{- end -}}`}}
-    vault.hashicorp.com/ca-cert: "/run/secrets/kubernetes.io/serviceaccount/ca.crt"
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}

@@ -43,9 +43,8 @@ spec:
             httpGet:
               path: /health
               port: http
-          args:
-            - echo set env vars;
-            - export ApiToken=$(cat /vault/secrets/api.env)
+          command: ["/bin/bash"]
+          args: ["-c", "source $(/vault/secrets/api.env)", "dotnet", "/app/WebApi.dll", ]
           envFrom:
             - configMapRef:
                 name: {{include "helm-webapp.fullname" .}}-config

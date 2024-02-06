@@ -33,7 +33,7 @@ serviceAccount:
 podAnnotations:
   vault.hashicorp.com/tls_skip_verify: 'true'
   vault.hashicorp.com/agent-inject: 'true'
-  vault.hashicorp.com/role: 'weatherapp-dev'
+  vault.hashicorp.com/role: 'weatherapi'
   vault.hashicorp.com/agent-inject-secret-api.env: '/kv/weatherapi'
   vault.hashicorp.com/agent-inject-template-api.env: |
     {{`{{- with secret "/kv/weatherapi" -}}
